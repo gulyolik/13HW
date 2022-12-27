@@ -15,26 +15,29 @@ public class ProductManager {
         repo.save(products);
     }
 
-    public  void getProducts() {
+    public void getProducts() {
+
         repo.findAll();
     }
 
 
     public Product[] searchBy(String text) {
+        int amount = 0;
         Product[] result = new Product[0];
         for (Product product : repo.findAll()) {
             if (matches(product, text)) {
-                Product[] tmp = new Product[result.length+1];
-                tmp[tmp.length-1] = product;
+                Product[] tmp = new Product[result.length + 1];
+                tmp[tmp.length - 1] = product;
                 result = tmp;
             }
         }
-        return result;
-    }
+
+            return result;
+        }
 
 
-    public boolean matches(Product product, String search) {
-        return product.getName().contains(search);
-    }
+        public boolean matches (Product product, String search){
+            return product.getName().contains(search);
+        }
 }
 
