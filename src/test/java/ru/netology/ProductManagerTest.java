@@ -60,7 +60,7 @@ public class ProductManagerTest {
     @Test
     public void shouldCheckIfProductMatches() {
         boolean expected = true;
-        boolean actual = manager.matches(smartphone5, "phone");
+        boolean actual = smartphone5.matches( "phone");
         Assertions.assertEquals(expected, actual);
     }
 
@@ -72,5 +72,47 @@ public class ProductManagerTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchByNameTest(){
+        Product[] expected = {product1};
+Product[] actual = manager.searchBy("product1");
+Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    public void shouldSearchByAuthorTest(){
+        Product[] expected = {book3};
+        Product[] actual = manager.searchBy("author3");
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+
+    @Test
+    public void shouldSearchByFactoryTest(){
+        Product[] expected = {smartphone4};
+        Product[] actual = manager.searchBy("factory4");
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    public void shouldSearchBookByNameTest(){
+        Product[] expected = {book2};
+        Product[] actual = manager.searchBy("name2");
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    public void shouldSearchProductByNameTest(){
+        Product[] expected = {product1};
+        Product[] actual = manager.searchBy("product1");
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    public void shouldSearchSmartphoneByNameTest(){
+        Product[] expected = { smartphone4};
+        Product[] actual = manager.searchBy("phone4");
+        Assertions.assertArrayEquals(expected,actual);
+    }
 
 }
