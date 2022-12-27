@@ -25,19 +25,15 @@ public class ProductManager {
         int amount = 0;
         Product[] result = new Product[0];
         for (Product product : repo.findAll()) {
-            if (matches(product, text)) {
+            if (product.matches(text)) {
                 Product[] tmp = new Product[result.length + 1];
                 tmp[tmp.length - 1] = product;
                 result = tmp;
             }
         }
 
-            return result;
-        }
+        return result;
+    }
 
-
-        public boolean matches (Product product, String search){
-            return product.getName().contains(search);
-        }
 }
 
