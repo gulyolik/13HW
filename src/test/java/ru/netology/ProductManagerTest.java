@@ -114,5 +114,38 @@ Assertions.assertArrayEquals(expected,actual);
         Product[] actual = manager.searchBy("phone4");
         Assertions.assertArrayEquals(expected,actual);
     }
+    @Test
+    public void shouldRemoveByIdNewWay(){
+        repo.removeById(product1.getId());
+        Product[] expected = {product2, product3, product4, product5, book1,book2, book3, book4, book5, smartphone1, smartphone2, smartphone3, smartphone4, smartphone5};
+        Product[] actual = repo.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotFindIdByNewWay(){
+        Assertions.assertThrows(NotFoundException.class,
+                () ->{
+            repo.removeById(17);
+                });
+    }
+
+    @Test
+    public void shouldSaveByNewWay(){
+        Product smartphone6 = new Smartphone(16,"phone6", 999,"factory6");
+        repo.save(smartphone6);
+        Product[] expected = {product1, product2, product3, product4, product5, book1, book2, book3, book4, book5, smartphone1, smartphone2, smartphone3, smartphone4, smartphone5, smartphone6};
+        Product[] actual = repo.findAll();
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchRepeatedId(){
+        Product smartphone6 = new Smartphone(15,"phone6", 999,"factory6");
+        Assertions.assertThrows(AlreadyExistsException.class,
+                ()   -> {
+            repo.save(smartphone6);
+        });
+    }
 
 }
