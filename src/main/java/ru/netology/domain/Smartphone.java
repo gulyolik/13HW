@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Smartphone extends Product{
+public class Smartphone extends Product {
     private String factory;
 
     public Smartphone(int id, String name, int price, String factory) {

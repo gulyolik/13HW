@@ -32,12 +32,12 @@ public class ProductManager {
             }
         }
 
-            return result;
-        }
+        return result;
+    }
 
 
-        public boolean matches (Product product, String search){
-            return product.getName().contains(search);
-        }
+    public boolean matches(Product product, String search) {
+        return product.getName().contains(search);
+    }
 }
 
