@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
-public class Smartphone extends Product{
+public class Smartphone extends Product {
     public String getFactory() {
         return factory;
     }
@@ -18,13 +18,13 @@ public class Smartphone extends Product{
     }
 
     @Override
-    public boolean matches(String search){
-        if(super.matches(search)){
+    public boolean matches(String search) {
+        if (super.matches(search)) {
             return true;
-        }else{
+        } else {
             return getFactory().contains(search);
-            }
         }
     }
+}
 
 

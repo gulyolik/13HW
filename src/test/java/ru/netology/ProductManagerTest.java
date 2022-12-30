@@ -60,7 +60,7 @@ public class ProductManagerTest {
     @Test
     public void shouldCheckIfProductMatches() {
         boolean expected = true;
-        boolean actual = smartphone5.matches( "phone");
+        boolean actual = smartphone5.matches("phone");
         Assertions.assertEquals(expected, actual);
     }
 
@@ -73,66 +73,67 @@ public class ProductManagerTest {
     }
 
     @Test
-    public void shouldSearchByNameTest(){
-        Product[] expected = {product1};
-Product[] actual = manager.searchBy("product1");
-Assertions.assertArrayEquals(expected,actual);
-    }
-
-    @Test
-    public void shouldSearchByAuthorTest(){
-        Product[] expected = {book3};
-        Product[] actual = manager.searchBy("author3");
-        Assertions.assertArrayEquals(expected,actual);
-    }
-
-
-    @Test
-    public void shouldSearchByFactoryTest(){
-        Product[] expected = {smartphone4};
-        Product[] actual = manager.searchBy("factory4");
-        Assertions.assertArrayEquals(expected,actual);
-    }
-
-    @Test
-    public void shouldSearchBookByNameTest(){
-        Product[] expected = {book2};
-        Product[] actual = manager.searchBy("name2");
-        Assertions.assertArrayEquals(expected,actual);
-    }
-
-    @Test
-    public void shouldSearchProductByNameTest(){
+    public void shouldSearchByNameTest() {
         Product[] expected = {product1};
         Product[] actual = manager.searchBy("product1");
-        Assertions.assertArrayEquals(expected,actual);
+        Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldSearchSmartphoneByNameTest(){
-        Product[] expected = { smartphone4};
-        Product[] actual = manager.searchBy("phone4");
-        Assertions.assertArrayEquals(expected,actual);
+    public void shouldSearchByAuthorTest() {
+        Product[] expected = {book3};
+        Product[] actual = manager.searchBy("author3");
+        Assertions.assertArrayEquals(expected, actual);
     }
+
+
     @Test
-    public void shouldRemoveByIdNewWay(){
+    public void shouldSearchByFactoryTest() {
+        Product[] expected = {smartphone4};
+        Product[] actual = manager.searchBy("factory4");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchBookByNameTest() {
+        Product[] expected = {book2};
+        Product[] actual = manager.searchBy("name2");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchProductByNameTest() {
+        Product[] expected = {product1};
+        Product[] actual = manager.searchBy("product1");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchSmartphoneByNameTest() {
+        Product[] expected = {smartphone4};
+        Product[] actual = manager.searchBy("phone4");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldRemoveByIdNewWay() {
         repo.removeById(product1.getId());
-        Product[] expected = {product2, product3, product4, product5, book1,book2, book3, book4, book5, smartphone1, smartphone2, smartphone3, smartphone4, smartphone5};
+        Product[] expected = {product2, product3, product4, product5, book1, book2, book3, book4, book5, smartphone1, smartphone2, smartphone3, smartphone4, smartphone5};
         Product[] actual = repo.findAll();
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void shouldNotFindIdByNewWay(){
+    public void shouldNotFindIdByNewWay() {
         Assertions.assertThrows(NotFoundException.class,
-                () ->{
-            repo.removeById(17);
+                () -> {
+                    repo.removeById(17);
                 });
     }
 
     @Test
-    public void shouldSaveByNewWay(){
-        Product smartphone6 = new Smartphone(16,"phone6", 999,"factory6");
+    public void shouldSaveByNewWay() {
+        Product smartphone6 = new Smartphone(16, "phone6", 999, "factory6");
         repo.save(smartphone6);
         Product[] expected = {product1, product2, product3, product4, product5, book1, book2, book3, book4, book5, smartphone1, smartphone2, smartphone3, smartphone4, smartphone5, smartphone6};
         Product[] actual = repo.findAll();
@@ -140,12 +141,12 @@ Assertions.assertArrayEquals(expected,actual);
     }
 
     @Test
-    public void shouldSearchRepeatedId(){
-        Product smartphone6 = new Smartphone(15,"phone6", 999,"factory6");
+    public void shouldSearchRepeatedId() {
+        Product smartphone6 = new Smartphone(15, "phone6", 999, "factory6");
         Assertions.assertThrows(AlreadyExistsException.class,
-                ()   -> {
-            repo.save(smartphone6);
-        });
+                () -> {
+                    repo.save(smartphone6);
+                });
     }
 
 }
