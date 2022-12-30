@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class Book extends Product{
+public class Book extends Product {
     public String getAuthor() {
         return author;
     }
@@ -19,9 +19,9 @@ public class Book extends Product{
 
     @Override
     public boolean matches(String search) {
-        if (super.matches(search)){
+        if (super.matches(search)) {
             return true;
-        } else{
+        } else {
             return getAuthor().contains(search);
         }
     }
